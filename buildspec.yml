@@ -23,7 +23,5 @@ phases:
   post_build:
     commands:
       - echo "Build completed on $(date)"
-      - env | grep "MY_SSM_VAR"
-      - env | grep "$MY_SECRET_VAR"
 
 
