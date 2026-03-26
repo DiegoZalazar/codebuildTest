@@ -1,0 +1,27 @@
+version: 0.2
+
+env:
+  variables:
+    MY_PLAINTEXT_VAR: "hello-world"
+  parameter-store:
+    MY_SSM_VAR: "/accelerator/controltower/driftDetected"
+  secrets-manager:
+    MY_SECRET_VAR: "/InnovationSandbox/myisb/Auth/JwtSecret"
+
+phases:
+  install:
+    commands:
+      - echo "install phase"
+
+  build:
+    commands:
+      - echo "build phase"
+      - echo "Plaintext var: $MY_PLAINTEXT_VAR"
+      - echo "LZA drift SSM: $MY_SSM_VAR"
+      - echo "JwtSecret var: $MY_SECRET_VAR"
+
+  post_build:
+    commands:
+      - echo "Build completed on $(date)"
+
+
