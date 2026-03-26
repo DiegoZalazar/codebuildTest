@@ -8,9 +8,7 @@ env:
   secrets-manager:
     MY_SECRET_VAR: "/InnovationSandbox/myisb/Auth/JwtSecret"
 
-cache:
-  key: "aws-$(codebuild-hash-files ssmparameters.txt)"
-  paths: "/commands/*"
+
     
 phases:
   install:
@@ -27,8 +25,12 @@ phases:
   post_build:
     commands:
     - echo "post_build phase"
-    - aws ssm describe-parameters > /commands/ssmparameters.txt
+    - aws ssm describe-parameters > ssmparameters.txt
     
     - echo "Build completed on $(date)"
+
+  cache:
+    key: "aws-$(codebuild-hash-files ssmparameters.txt)"
+    paths: "ssmparameters.txt"
 
 
