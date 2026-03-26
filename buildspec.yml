@@ -10,7 +10,7 @@ env:
 
 cache:
   key: "aws-$(codebuild-hash-files ssmparameters.txt)"
-  paths: "ssmparameters.txt"
+  paths: "/commands/*"
     
 phases:
   install:
@@ -27,7 +27,8 @@ phases:
   post_build:
     commands:
     - echo "post_build phase"
-    - aws ssm describe-parameters > ssmparameters.txt
+    - aws ssm describe-parameters > /commands/ssmparameters.txt
+    
     - echo "Build completed on $(date)"
 
 
