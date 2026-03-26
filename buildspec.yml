@@ -16,9 +16,9 @@ phases:
   build:
     commands:
       - echo "build phase"
-      - echo "Plaintext var: $MY_PLAINTEXT_VAR"
-      - echo "LZA drift SSM: $MY_SSM_VAR"
-      - echo "JwtSecret var: $MY_SECRET_VAR"
+      - echo "Plaintext var= $MY_PLAINTEXT_VAR"
+      - echo "LZA drift SSM= $MY_SSM_VAR"
+      - echo "JwtSecret var= $MY_SECRET_VAR"
 
   post_build:
     commands:
